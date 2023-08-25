@@ -10,7 +10,7 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerTouchMovement : MonoBehaviour
 {
-    [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
+    [SerializeField] private Vector2 JoystickSize;
     [SerializeField] private FloatingJoystick Joystick;
     [SerializeField] private PlayerController PlayerController;
     private Vector2 joystickVector;
@@ -29,7 +29,7 @@ public class PlayerTouchMovement : MonoBehaviour
     private void Update()
     {
         joystickVector = new Vector3(MovementAmount.x, MovementAmount.y);
-        PlayerController.MyVector(joystickVector);
+        PlayerController.GetVector(joystickVector);
     }
     
 
@@ -58,10 +58,12 @@ public class PlayerTouchMovement : MonoBehaviour
                     currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition
                     ).normalized
                     * maxMovement;
+                knobPosition.y = 0; // slidera dönüþtürmek için sonradan eklendi
             }
             else
             {
                 knobPosition = currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition;
+                knobPosition.y = 0; // slidera dönüþtürmek için sonradan eklendi
             }
 
             Joystick.Knob.anchoredPosition = knobPosition;

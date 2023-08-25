@@ -9,15 +9,13 @@ public class RoadManager : MonoBehaviour
     public Transform player;
     [Tooltip("Ýlk ve son yol ayný olmalý.")]
     public List<Road> roadPieces;
-    private float pieceLength; // Length of a single piece
+    [SerializeField] private float pieceLength = 240f; // Length of a single piece
 
     private Road firstRoad;
     private Road currentRoad;
 
     void Start()
     {
-        Vector3 localScale = roadPieces[0].transform.GetChild(0).localScale;
-        pieceLength = localScale.z;
         SetUpRoads();
     }
 

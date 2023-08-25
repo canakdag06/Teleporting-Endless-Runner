@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,14 +19,17 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;
     private PlayerControls controls;
+
     private Vector2 vector;
+
+    Vector3 velocity;
+    [SerializeField] float velocityLerpValue = 10;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         controls = new PlayerControls();
         controls.Player.Enable();
-        /* controls.Player.Move.performed += Movement_performed; */  // Insert Events
     }
 
     private void Update()
@@ -34,6 +37,12 @@ public class PlayerController : MonoBehaviour
         SpeedUp();
         ProcessTranslation();
         ProcessRotation();
+        VelocityLerp();
+    }
+
+    void VelocityLerp()
+    {
+        velocity = Vector3.Lerp(velocity, vector, velocityLerpValue * Time.deltaTime);
     }
 
     private void SpeedUp()
@@ -47,21 +56,19 @@ public class PlayerController : MonoBehaviour
     public void ProcessTranslation()
     {
         //xThrow = controls.Player.Move.ReadValue<float>();
-        xThrow = vector.x * 5f;
-        Debug.Log(xThrow);
-        Debug.Log("Vector = " + vector);
+        xThrow = velocity.x * 5f;
         float xOffset = xThrow * Time.deltaTime * controlSpeed;
         float rawXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
         transform.localPosition = new Vector3(clampedXPos, transform.localPosition.y, transform.localPosition.z);
     }
 
-    public void MyVector(Vector2 joystickVector)
+    public void GetVector(Vector2 joystickVector)
     {
         vector = joystickVector;
     }
 
-    void ProcessRotation()
+    private void ProcessRotation()
     {
         float roll = xThrow * controlRollFactor;
         transform.localRotation = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, roll);

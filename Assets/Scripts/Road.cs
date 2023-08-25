@@ -8,7 +8,7 @@ public class Road : MonoBehaviour
     public Transform _transform;
     public Road nextRoad;
     public Road prevRoad;
-    private float pieceLength;
+    [SerializeField] private float pieceLength = 240f;
 
     [SerializeField] public Vector3 endPosition;
 
@@ -16,7 +16,6 @@ public class Road : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        pieceLength = _transform.GetChild(0).transform.localScale.z;
         Gizmos.color = Color.blue;
         Vector3 startPoint = endPosition + new Vector3(0f, 0f, (pieceLength / 3));
         Vector3 endPoint = endPosition + new Vector3(0f, 0f, (pieceLength / 3)) + transform.right * gizmosDistance;
