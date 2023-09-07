@@ -35,14 +35,10 @@ public class NewPlayerController : MonoBehaviour
     private Vector2 vector;
     private Vector2 delta;
 
-    //public float maxSwipeSpeed = 10f; // Maksimum hýzý ayarlayabilirsiniz.
-    //public float smoothingFactor = 0.5f; // Hareketi pürüzsüzleþtiren faktörü ayarlayabilirsiniz.
-
-    //public float rsensivity;
-    //public float velocityDuration = 0.5f;
-
     [SerializeField] Transform sphere;
     [SerializeField] float followSpeed;
+
+    [SerializeField] float lookSpeed;
     void Start()
     {
     }
@@ -164,11 +160,14 @@ public class NewPlayerController : MonoBehaviour
     {
         if (!isFalling)
         {
-            vector = sphere.GetComponent<SphereMovement>().GetVector();
-            delta = sphere.GetComponent<SphereMovement>().GetDelta();
+            Vector3 targetDirection = sphere.position - transform.position;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetDirection), Time.deltaTime * lookSpeed);
 
-            float roll = vector.x * delta.magnitude * controlRollFactor;
-            transform.localRotation = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, roll);
+                    // Z ROTATION ( COULDN'T MAKE IT WORK WITH THE CODE ABOVE )
+
+            //float newRotationZ = Mathf.Lerp(0f, 45f, Mathf.Abs(targetDirection.x) / 6f);
+            //Debug.Log("New Rotation Z: " + newRotationZ);
+            //transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, newRotationZ * lookSpeed);
         }
     }
 }

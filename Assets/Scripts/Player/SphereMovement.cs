@@ -24,7 +24,7 @@ public class SphereMovement : MonoBehaviour
 
     private void AdjustZ()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, missilePos.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, missilePos.position.z+10f);
     }
 
     private void TouchInput()

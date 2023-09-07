@@ -7,14 +7,14 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] ParticleSystem explosionVFX;
 
-    private PlayerController playerController;
+    private NewPlayerController playerController;
     private MeshRenderer meshRenderer;
     private CapsuleCollider capsuleCollider;
     private DeathHandler deathHandler;
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<NewPlayerController>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         deathHandler = GetComponent<DeathHandler>();
