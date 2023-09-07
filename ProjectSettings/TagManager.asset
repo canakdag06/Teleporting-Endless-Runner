@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Portal
   - Road
+  - Obstacle
+  - Fuel
+  - ThrustParticle
+  - Follow
   layers:
   - Default
   - TransparentFX

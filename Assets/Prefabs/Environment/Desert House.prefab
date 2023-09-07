@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1419783463621179118}
   m_Layer: 0
   m_Name: Desert House
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
       propertyPath: m_Name
       value: house-egypt-big
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
       propertyPath: m_LocalScale.x
@@ -103,10 +107,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 567481377443726952}
   m_SourcePrefab: {fileID: 100100000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
 --- !u!4 &3363385830823689781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
   m_PrefabInstance: {fileID: 3363385830823814325}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3363385830823715349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 47e1e7f319705db458dfe2bc96f5203d, type: 3}
+  m_PrefabInstance: {fileID: 3363385830823814325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &567481377443726952
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363385830823715349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.819011, y: 6.5, z: 7.1275353}
+  m_Center: {x: -0.15071727, y: 3.25, z: 0.06252814}

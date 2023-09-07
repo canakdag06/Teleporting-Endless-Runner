@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 423186029112640813}
   m_Layer: 0
   m_Name: Industry Warehouse
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
       propertyPath: m_Name
       value: industry-warehouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
       propertyPath: m_LocalScale.x
@@ -103,8 +107,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7629253267432628819}
   m_SourcePrefab: {fileID: 100100000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
+--- !u!1 &9048185436207841974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
+  m_PrefabInstance: {fileID: 9048185436207940630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7629253267432628819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048185436207841974}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 17.550005, y: 6.3021235, z: 17.478912}
+  m_Center: {x: -0.024999624, y: 3.1327617, z: 0.2605453}
 --- !u!4 &9048185436208340630 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: da1827b09c922b040ab1ecd9bf52fd14, type: 3}
