@@ -16,10 +16,6 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] float controlRollFactor;
     float xThrow;
 
-    [Header("Horizontal Lerping")]
-    Vector3 velocity;
-    [SerializeField] float velocityLerpValue = 3f;
-
     [Header("Fuel & No-Fuel Situation")]
     public FuelManager fuelManager;
     float currentFuel;
@@ -33,24 +29,16 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] public ParticleSystem thrustVFX;
 
     private Vector2 vector;
-    private Vector2 delta;
 
     [SerializeField] Transform sphere;
     [SerializeField] float followSpeed;
-
     [SerializeField] float lookSpeed;
-    void Start()
-    {
-    }
-
  
     void Update()
     {
         SpeedUp();
         FollowSphere();
-        //ProcessTranslation();
         ProcessRotation();
-        //VelocityLerp();
     }
 
     private void SpeedUp()
@@ -84,7 +72,7 @@ public class NewPlayerController : MonoBehaviour
         newPosition.y -= fallDistance;
         transform.position = newPosition;
 
-        Quaternion targetRotation = Quaternion.Euler(90, 0, 0); // -90 derece X eksenine dönme
+        Quaternion targetRotation = Quaternion.Euler(90, 0, 0); // -90 deg X Rotation
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
@@ -98,62 +86,13 @@ public class NewPlayerController : MonoBehaviour
         return distance;
     }
 
-    //public Vector3 firstTouch;
-    //public Vector3 lastTouch;
-    //public Vector3 result;
-
-    //private void GetTouchInput()
-    //{
-    //    if (Input.touchCount > 0)
-    //    {
-    //        touch = Input.GetTouch(0);
-
-    //        if (touch.phase == TouchPhase.Began)
-    //        {
-    //            firstTouch = touch.position;
-    //        }
-
-    //        if (touch.phase == TouchPhase.Moved)
-    //        {
-    //            lastTouch = touch.position;
-    //            result = lastTouch - firstTouch;
-    //            result *= rsensivity;
-    //            firstTouch = lastTouch;
-
-    //            //Vector3 newVector = new Vector3(
-    //            //    transform.position.x + result.x,
-    //            //    transform.position.y,
-    //            //    transform.position.z);
-
-    //            Vector3 temp;
-    //            temp = transform.position;
-    //            temp.x = Mathf.Lerp(temp.x, result.x, velocityDuration * Time.deltaTime);
-    //            transform.position = temp;
-    //        }
-    //        if (touch.phase == TouchPhase.Ended)
-    //        {
-    //            firstTouch = Vector2.zero;
-    //            lastTouch = Vector2.zero;
-    //            result = Vector2.zero;
-    //        }
-    //    }
-    //}
-
-    void VelocityLerp()
-    {
-        velocity = Vector3.Lerp(velocity, vector, velocityLerpValue * Time.deltaTime);
-    }
-
     public void ProcessTranslation()
     {
         xThrow = vector.x;
         float xOffset = xThrow * controlSpeed;
         float rawXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
-        transform.localPosition = new Vector3(clampedXPos, transform.localPosition.y, transform.localPosition.z) ;
-        //float posx = Mathf.Lerp(transform.localPosition.x, clampedXPos, lerpConstant);
-        //Debug.Log("posX: " + posx.ToString());
-        //transform.localPosition = new Vector3(posx,transform.localPosition.y,transform.position.z);
+        transform.localPosition = new Vector3(clampedXPos, transform.localPosition.y, transform.localPosition.z);
     }
 
     private void ProcessRotation()

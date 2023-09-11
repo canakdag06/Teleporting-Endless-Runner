@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RocketShake : MonoBehaviour
 {
-    public float shakeAmount = 0.1f; // Titreme miktarý
-    public float shakeSpeed = 10f;   // Titreme hýzý
+    public float shakeAmount = 0.1f;
+    public float shakeSpeed = 10f;
 
     private Vector3 originalPosition;
     private float time;
@@ -19,7 +19,7 @@ public class RocketShake : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        // Füze objesini yerel koordinatlarýna göre belirli bir aralýkta titretme iþlemi.
+        // The process of vibrating the missile object in a certain range according to its local coordinates.
         float Offset = Mathf.Sin(time * shakeSpeed) * shakeAmount;
         Vector3 newPosition = originalPosition + new Vector3(Offset, Offset, 0f);
         transform.localPosition = newPosition;

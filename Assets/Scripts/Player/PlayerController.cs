@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    /* ------------------------------------ NOT USED -------------------------------*/
     [SerializeField] float speed = 10f;
     [SerializeField] float maxSpeed = 50f;
     [SerializeField] float speedIncrease = 1f;
@@ -35,9 +36,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public ParticleSystem thrustVFX;
 
-    private void Awake()
-    {
-    }
 
     private void Update()
     {
@@ -76,7 +74,6 @@ public class PlayerController : MonoBehaviour
 
     public void ProcessTranslation()
     {
-        //xThrow = controls.Player.Move.ReadValue<float>();
         xThrow = velocity.x * 5f;
         float xOffset = xThrow * Time.deltaTime * controlSpeed;
         float rawXPos = transform.localPosition.x + xOffset;

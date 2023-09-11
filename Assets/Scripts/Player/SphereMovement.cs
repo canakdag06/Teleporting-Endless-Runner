@@ -12,9 +12,7 @@ public class SphereMovement : MonoBehaviour
     [SerializeField] Transform missilePos;
     Vector3 newVector;
     Vector3 deltaPosition;
-    private void Start()
-    {
-    }
+    [SerializeField] float xRange = 3f;
 
     private void Update()
     {
@@ -35,14 +33,14 @@ public class SphereMovement : MonoBehaviour
 
             if (touch.phase == UnityEngine.TouchPhase.Moved)
             {
-
                 deltaPosition = touch.deltaPosition * Time.deltaTime;
                 deltaPosition = Vector3.Lerp(deltaPosition, touch.deltaPosition, 0.1f);
+                float rawXPos = transform.position.x + touch.deltaPosition.x * speedModifier;
+                float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange);
                 newVector = new Vector3(
-                    transform.position.x + touch.deltaPosition.x * speedModifier,
+                    clampedXPos,
                     transform.position.y,
                     transform.position.z);
-                Debug.Log(newVector);
                 transform.position = newVector;
             }
         }
