@@ -101,12 +101,6 @@ public class NewPlayerController : MonoBehaviour
         {
             Vector3 targetDirection = sphere.position - transform.position;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetDirection), Time.deltaTime * lookSpeed);
-
-                    // Z ROTATION ( COULDN'T MAKE IT WORK WITH THE CODE ABOVE )
-
-            //float newRotationZ = Mathf.Lerp(0f, 45f, Mathf.Abs(targetDirection.x) / 6f);
-            //Debug.Log("New Rotation Z: " + newRotationZ);
-            //transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, newRotationZ * lookSpeed);
         }
     }
 }
